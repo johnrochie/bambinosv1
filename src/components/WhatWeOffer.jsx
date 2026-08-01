@@ -5,6 +5,8 @@ const features = [
     description:
       'Hands-on textures, colours, and safe messy moments that spark curiosity and build fine motor skills.',
     border: 'border-bambino-red',
+    image: '/images/offer/offer-messy-play.jpeg',
+    imageAlt: 'Child pouring colourful gloop during messy play',
   },
   {
     icon: '🌱',
@@ -12,6 +14,8 @@ const features = [
     description:
       'Freedom to follow their interests with gentle guidance — confidence grows when children lead the way.',
     border: 'border-bambino-yellow',
+    image: '/images/offer/offer-child-led.jpeg',
+    imageAlt: 'Little hands rolling playdough on a jungle-themed table',
   },
   {
     icon: '👫',
@@ -19,6 +23,8 @@ const features = [
     description:
       'Side-by-side and small-group play that encourages sharing, empathy, and early friendship skills.',
     border: 'border-bambino-green',
+    image: '/images/offer/offer-social.jpeg',
+    imageAlt: 'Two children playing together with jungle animals in a water tray',
   },
   {
     icon: '🗣️',
@@ -26,6 +32,8 @@ const features = [
     description:
       'Songs, stories, and rich conversation woven into play to support early words and communication.',
     border: 'border-bambino-blue',
+    image: '/images/offer/offer-language.jpeg',
+    imageAlt: 'A grown-up chatting with a toddler during a beach-themed sensory tray',
   },
   {
     icon: '🏘️',
@@ -59,20 +67,32 @@ export function WhatWeOffer() {
           {features.map((item) => (
             <li
               key={item.title}
-              className={`relative rounded-xl border-t-4 bg-white p-6 shadow-md ring-1 ring-gray-100 ${item.border} ${
+              className={`relative overflow-hidden rounded-xl border-t-4 bg-white shadow-md ring-1 ring-gray-100 ${item.border} ${
                 item.comingSoon ? 'opacity-90' : ''
               }`}
             >
               {item.comingSoon && (
-                <span className="absolute right-3 top-3 rounded-full bg-bambino-teal px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                <span className="absolute right-3 top-3 z-10 rounded-full bg-bambino-teal px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white">
                   Coming Soon
                 </span>
               )}
-              <div className="text-4xl" aria-hidden="true">
-                {item.icon}
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt}
+                  className="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                  width="675"
+                  height="506"
+                />
+              )}
+              <div className="p-6">
+                <div className="text-4xl" aria-hidden="true">
+                  {item.icon}
+                </div>
+                <h3 className="mt-3 font-heading text-xl font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-700 sm:text-base">{item.description}</p>
               </div>
-              <h3 className="mt-3 font-heading text-xl font-bold text-gray-900">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-700 sm:text-base">{item.description}</p>
             </li>
           ))}
         </ul>

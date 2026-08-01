@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { siteConfig } from '../config/siteConfig'
 
 export function Hero() {
@@ -64,12 +65,12 @@ export function Hero() {
           >
             Book a Session
           </a>
-          <a
-            href="#about"
+          <Link
+            to="/#about"
             className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-bambino-purple bg-transparent px-8 py-3 text-base font-bold text-bambino-purple transition hover:bg-bambino-purple hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-teal focus-visible:ring-offset-2"
           >
             Learn More
-          </a>
+          </Link>
         </div>
       </div>
     </section>

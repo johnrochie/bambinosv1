@@ -25,8 +25,19 @@ export const siteConfig = {
     siteByLabel: 'Website by EvoMedia',
     siteByUrl: 'https://www.evomedia.site',
   },
-  /** Main lockup shown in the hero (replace file in public/images/ and path here if needed). */
+  /** Main lockup in the hero; text label in the navbar (no header logo image). */
   branding: {
     heroLogoSrc: '/images/hero-logo.png',
+    navTitle: 'Bambinos Playful Learning',
+  },
+  /** Privacy / GDPR — replace placeholders with real contact details. */
+  privacy: {
+    contactEmail: 'PLACEHOLDER — add privacy contact email',
+    /** Optional: dedicated DPO or privacy inbox */
+    dpoEmail: '',
+    phone: '+353 86 267 1230',
+    lastUpdated: '3 April 2026',
+    /** Public site URL (for clarity in policy); optional */
+    siteUrl: 'https://www.bambinosplayfullearning.com',
   },
 }

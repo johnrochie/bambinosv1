@@ -4,3 +4,6 @@ dist
 *.local
 .env
 .env.*
+
+# Raw photo dumps — curated/optimized copies live in public/images/
+/images

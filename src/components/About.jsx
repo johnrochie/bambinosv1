@@ -14,7 +14,7 @@ export function About() {
           {!imgFailed ? (
             <img
               src="/images/about-placeholder.jpg"
-              alt="Warm, welcoming play space at Bambinos Playful Learning"
+              alt="Families enjoying bubbles and sensory play trays at Bambinos Playful Learning"
               className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg ring-4 ring-white/80"
               width="800"
               height="600"

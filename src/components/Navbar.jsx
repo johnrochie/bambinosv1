@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { siteConfig } from '../config/siteConfig'
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Sessions', href: '#sessions' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/#home' },
+  { label: 'About', to: '/#about' },
+  { label: 'Sessions', to: '/#sessions' },
+  { label: 'Gallery', to: '/#gallery' },
+  { label: 'Contact', to: '/#contact' },
 ]
 
 export function Navbar() {
@@ -60,29 +61,25 @@ export function Navbar() {
         className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
-        <a
-          href="#home"
-          className="flex shrink-0 items-center gap-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-teal focus-visible:ring-offset-2"
+        <Link
+          to="/"
+          className="min-h-11 shrink-0 rounded-md py-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-teal focus-visible:ring-offset-2"
           onClick={closeMenu}
         >
-          <img
-            src="/logo.jpeg"
-            alt="Bambinos Playful Learning — Baby & Toddler Play Centre"
-            className="h-14 w-auto object-contain"
-            width="160"
-            height="56"
-          />
-        </a>
+          <span className="font-heading text-base font-extrabold leading-snug text-bambino-purple sm:text-lg">
+            {siteConfig.branding.navTitle}
+          </span>
+        </Link>
 
         <div className="hidden items-center gap-1 md:flex md:gap-2">
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
+            <Link
+              key={item.to}
+              to={item.to}
               className="inline-flex min-h-11 items-center justify-center rounded-full px-3 py-2 text-sm font-semibold text-gray-800 transition-colors hover:bg-bambino-cream hover:text-bambino-purple focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-teal focus-visible:ring-offset-2"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <a
             href={siteConfig.booking.bookwhenUrl}
@@ -132,15 +129,15 @@ export function Navbar() {
       >
         <ul className="flex flex-col gap-1 px-4 py-4 pb-6">
           {navItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
+            <li key={item.to}>
+              <Link
+                to={item.to}
                 tabIndex={menuOpen ? undefined : -1}
                 className="flex min-h-11 items-center rounded-lg px-4 text-base font-semibold text-gray-800 hover:bg-bambino-cream focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-teal"
                 onClick={closeMenu}
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="pt-2">

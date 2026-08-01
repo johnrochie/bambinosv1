@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { siteConfig } from '../config/siteConfig'
+import { openCookiePreferences } from './CookieConsent'
 
 const footerLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/#about' },
+  { label: 'Gallery', to: '/#gallery' },
+  { label: 'Contact', to: '/#contact' },
 ]
 
 export function Footer() {
@@ -29,15 +31,23 @@ export function Footer() {
           <nav aria-label="Footer" className="flex flex-col items-center gap-3 md:items-end">
             <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-end">
               {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
                     className="min-h-11 inline-flex items-center text-sm font-semibold text-white/95 underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-bambino-purple"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/privacy"
+                  className="min-h-11 inline-flex items-center text-sm font-semibold text-white/95 underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-bambino-purple"
+                >
+                  Privacy &amp; cookies
+                </Link>
+              </li>
             </ul>
             <div className="flex gap-4">
               <a
@@ -67,6 +77,15 @@ export function Footer() {
             © 2025 Bambinos Playful Learning. All rights reserved.
           </p>
           <p className="mt-2 text-xs text-white/70">Baby &amp; Toddler Play Centre</p>
+          <p className="mt-3 text-xs text-white/60">
+            <button
+              type="button"
+              onClick={openCookiePreferences}
+              className="min-h-11 underline decoration-1 underline-offset-2 hover:text-white/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-bambino-purple"
+            >
+              Cookie settings
+            </button>
+          </p>
           <p className="mt-4 text-xs text-white/60">
             <a
               href={siteConfig.credits.siteByUrl}
