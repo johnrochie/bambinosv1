@@ -7,6 +7,14 @@ dist
 # ...except a checked-in template with no real values in it — same
 # .env* bug found and fixed in evomedia-dashboard's Prompt 4.
 !.env*.example
+# ...and .env.production: Vite bakes VITE_* vars into the public client
+# bundle at build time regardless, and these three (Supabase URL,
+# publishable/anon key, a page's own site_id) are the exact values
+# Supabase's own docs treat as safe to ship client-side — RLS, not
+# secrecy, is the real security boundary (see evomedia-cms's own RLS
+# policies). Committing this is what lets Vercel's git-triggered build
+# produce a working bundle with no separate dashboard env-var step.
+!.env.production
 
 # Raw photo dumps — curated/optimized copies live in public/images/
 /images
