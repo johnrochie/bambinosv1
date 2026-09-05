@@ -10,7 +10,9 @@ export const siteConfig = {
     facebook: 'https://facebook.com/PLACEHOLDER',
   },
   booking: {
-    bookwhenUrl: 'https://bookwhen.com/playfulbam',
+    // Evolution Media's own booking system (the CMS app's hosted page for
+    // this site). Bookwhen is retired.
+    url: 'https://evomedia-cms.vercel.app/book/22610c55-77b6-4be5-a11f-712f1568e5e4',
   },
   location: {
     name: 'Bambinos Playful Learning',

@@ -187,9 +187,10 @@ export function PrivacyPage() {
             </p>
             <ul className="mt-3 list-inside list-disc space-y-2">
               <li>
-                <strong>Online booking ({booking.bookwhenUrl})</strong> — when you leave our site or use embedded booking
-                flows, Bookwhen (or successor) processes booking-related personal data. Please read their privacy notice
-                and terms.
+                <strong>Online booking ({booking.url})</strong> — bookings are taken on a booking system run for us by
+                our website provider, Evolution Media. The details you enter there (name, email, phone and any note) are
+                used only to manage your booking and to contact you about it, and can be cancelled from the link in your
+                confirmation email.
               </li>
               <li>
                 <strong>Maps</strong> — our map embed may be provided by OpenStreetMap or another provider. Loading the

@@ -16,7 +16,7 @@ export function Navbar() {
   // Falls back to the last-known-good link while the CMS fetch is in
   // flight (or if it fails) — a nav bar is on every page, so it can't
   // just wait for a fetch before showing a working "Book Now" button.
-  const bookwhenUrl = content?.booking_url || siteConfig.booking.bookwhenUrl
+  const bookingUrl = content?.booking_url || siteConfig.booking.url
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolledPastHero, setScrolledPastHero] = useState(false)
 
@@ -88,7 +88,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href={bookwhenUrl}
+            href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 inline-flex min-h-11 items-center justify-center rounded-full bg-bambino-teal px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-bambino-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-purple focus-visible:ring-offset-2"
@@ -99,7 +99,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 md:hidden">
           <a
-            href={bookwhenUrl}
+            href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-bambino-teal px-4 text-sm font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-purple focus-visible:ring-offset-2"
@@ -148,7 +148,7 @@ export function Navbar() {
           ))}
           <li className="pt-2">
             <a
-              href={bookwhenUrl}
+              href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
               tabIndex={menuOpen ? undefined : -1}

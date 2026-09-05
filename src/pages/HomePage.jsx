@@ -76,12 +76,12 @@ export function HomePage() {
           You can still book a session below while we sort it out.
         </p>
         <a
-          href={siteConfig.booking.bookwhenUrl}
+          href={siteConfig.booking.url}
           target="_blank"
           rel="noopener noreferrer"
           className="relative inline-flex min-h-11 items-center justify-center rounded-full bg-bambino-teal px-8 py-3 text-base font-bold text-white shadow-md transition hover:bg-bambino-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-purple focus-visible:ring-offset-2"
         >
-          Book a Session on Bookwhen
+          Book a Session
         </a>
       </main>
     )
