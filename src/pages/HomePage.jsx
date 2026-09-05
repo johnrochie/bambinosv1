@@ -38,8 +38,20 @@ export function HomePage() {
 
   if (loading) {
     return (
-      <main className="flex min-h-[60vh] items-center justify-center bg-bambino-cream">
-        <p className="font-heading text-lg font-semibold text-bambino-purple">Loading…</p>
+      <main
+        className="relative flex min-h-[60vh] flex-col items-center justify-center gap-4 overflow-hidden bg-bambino-cream px-4"
+        aria-busy="true"
+      >
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -left-8 top-16 h-28 w-28 rounded-full bg-bambino-yellow/25 blur-sm" />
+          <div className="absolute right-[-1.5rem] bottom-16 h-24 w-24 rounded-full bg-bambino-teal/20" />
+        </div>
+        <span className="relative text-5xl motion-safe:animate-bounce" aria-hidden="true">
+          🧸
+        </span>
+        <p className="relative font-heading text-lg font-semibold text-bambino-purple">
+          Loading…
+        </p>
       </main>
     )
   }
@@ -49,15 +61,25 @@ export function HomePage() {
     // outage — keep a working path to the booking system even when the
     // rest of the page's content can't load.
     return (
-      <main className="flex min-h-[60vh] flex-col items-center justify-center gap-4 bg-bambino-cream px-4 text-center">
-        <p className="font-heading text-lg font-semibold text-gray-800">
+      <main className="relative flex min-h-[60vh] flex-col items-center justify-center gap-4 overflow-hidden bg-bambino-cream px-4 text-center">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -left-8 top-16 h-28 w-28 rounded-full bg-bambino-orange/20 blur-sm" />
+          <div className="absolute right-[-1.5rem] bottom-16 h-24 w-24 rounded-full bg-bambino-purple/15" />
+        </div>
+        <span className="relative text-5xl" aria-hidden="true">
+          🧩
+        </span>
+        <p className="relative font-heading text-lg font-semibold text-gray-800">
           We&rsquo;re having trouble loading this page right now.
+        </p>
+        <p className="relative max-w-sm text-sm text-gray-600">
+          You can still book a session below while we sort it out.
         </p>
         <a
           href={siteConfig.booking.bookwhenUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-bambino-teal px-8 py-3 text-base font-bold text-white shadow-md transition hover:bg-bambino-blue"
+          className="relative inline-flex min-h-11 items-center justify-center rounded-full bg-bambino-teal px-8 py-3 text-base font-bold text-white shadow-md transition hover:bg-bambino-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-purple focus-visible:ring-offset-2"
         >
           Book a Session on Bookwhen
         </a>
