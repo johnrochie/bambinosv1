@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom'
-import { siteConfig } from '../config/siteConfig'
 
-export function Hero() {
+export function Hero({ content }) {
+  const {
+    hero_headline: headline,
+    hero_subheading: subheading,
+    hero_logo_image: logoSrc,
+    hero_cta_label: ctaLabel,
+    hero_secondary_label: secondaryLabel,
+    booking_url: bookingUrl,
+  } = content
+
   return (
     <section
       id="home"
@@ -22,27 +30,33 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-4xl text-center">
-        <div className="mx-auto flex max-w-2xl justify-center px-2 sm:max-w-3xl">
-          <img
-            src={siteConfig.branding.heroLogoSrc}
-            alt=""
-            width={720}
-            height={280}
-            decoding="async"
-            fetchPriority="high"
-            className="h-auto w-full max-h-[min(40vw,220px)] object-contain drop-shadow-sm sm:max-h-[min(36vw,280px)] md:max-h-[320px]"
-            role="presentation"
-          />
-        </div>
-        <h1
-          id="hero-heading"
-          className="mt-8 font-heading text-3xl font-extrabold leading-tight text-gray-900 sm:mt-10 sm:text-4xl md:text-5xl lg:text-6xl"
-        >
-          Welcome to Bambinos Playful Learning
-        </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg font-medium text-gray-700 sm:text-xl md:text-2xl">
-          Where little ones explore, play, and grow
-        </p>
+        {logoSrc && (
+          <div className="mx-auto flex max-w-2xl justify-center px-2 sm:max-w-3xl">
+            <img
+              src={logoSrc}
+              alt=""
+              width={720}
+              height={280}
+              decoding="async"
+              fetchPriority="high"
+              className="h-auto w-full max-h-[min(40vw,220px)] object-contain drop-shadow-sm sm:max-h-[min(36vw,280px)] md:max-h-[320px]"
+              role="presentation"
+            />
+          </div>
+        )}
+        {headline && (
+          <h1
+            id="hero-heading"
+            className="mt-8 font-heading text-3xl font-extrabold leading-tight text-gray-900 sm:mt-10 sm:text-4xl md:text-5xl lg:text-6xl"
+          >
+            {headline}
+          </h1>
+        )}
+        {subheading && (
+          <p className="mx-auto mt-5 max-w-2xl text-lg font-medium text-gray-700 sm:text-xl md:text-2xl">
+            {subheading}
+          </p>
+        )}
 
         <div
           className="mt-6 flex flex-wrap items-center justify-center gap-3 text-3xl sm:gap-4 sm:text-4xl"
@@ -57,19 +71,21 @@ export function Hero() {
         </div>
 
         <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-          <a
-            href={siteConfig.booking.bookwhenUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-bambino-teal px-8 py-3 text-base font-bold text-white shadow-md transition hover:bg-bambino-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-purple focus-visible:ring-offset-2"
-          >
-            Book a Session
-          </a>
+          {bookingUrl && (
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-bambino-teal px-8 py-3 text-base font-bold text-white shadow-md transition hover:bg-bambino-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-purple focus-visible:ring-offset-2"
+            >
+              {ctaLabel || 'Book a Session'}
+            </a>
+          )}
           <Link
             to="/#about"
             className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-bambino-purple bg-transparent px-8 py-3 text-base font-bold text-bambino-purple transition hover:bg-bambino-purple hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-teal focus-visible:ring-offset-2"
           >
-            Learn More
+            {secondaryLabel || 'Learn More'}
           </Link>
         </div>
       </div>

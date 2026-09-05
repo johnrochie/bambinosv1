@@ -4,6 +4,9 @@ dist
 *.local
 .env
 .env.*
+# ...except a checked-in template with no real values in it — same
+# .env* bug found and fixed in evomedia-dashboard's Prompt 4.
+!.env*.example
 
 # Raw photo dumps — curated/optimized copies live in public/images/
 /images

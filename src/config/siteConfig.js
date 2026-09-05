@@ -1,11 +1,10 @@
 export const siteConfig = {
-  modules: {
-    hero: true,
-    about: true,
-    whatWeOffer: true,
-    gallery: true,
-    contact: true,
-  },
+  // `booking`/`social` below are fallback defaults only now — the real,
+  // editable values live in the CMS (`booking_url`, `contact_instagram`,
+  // `contact_facebook` on the "home" page) and are used everywhere
+  // except here. See src/lib/CmsContext.jsx. Section visibility/order
+  // moved to the CMS too (`section_order`, `<section>_visible`) — no
+  // longer a `modules` toggle here.
   social: {
     instagram: 'https://instagram.com/PLACEHOLDER',
     facebook: 'https://facebook.com/PLACEHOLDER',
@@ -25,9 +24,9 @@ export const siteConfig = {
     siteByLabel: 'Website by EvoMedia',
     siteByUrl: 'https://www.evomedia.site',
   },
-  /** Main lockup in the hero; text label in the navbar (no header logo image). */
+  /** Text label in the navbar. The hero lockup image itself is now a
+   * CMS-managed field (`hero_logo_image`) — no code-level default. */
   branding: {
-    heroLogoSrc: '/images/hero-logo.png',
     navTitle: 'Bambinos Playful Learning',
   },
   /** Privacy / GDPR — replace placeholders with real contact details. */

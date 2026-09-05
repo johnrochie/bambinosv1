@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { siteConfig } from '../config/siteConfig'
+import { useCmsContent } from '../lib/CmsContext'
 import { openCookiePreferences } from './CookieConsent'
 
 const footerLinks = [
@@ -11,6 +12,10 @@ const footerLinks = [
 ]
 
 export function Footer() {
+  const { content } = useCmsContent()
+  const instagram = content?.contact_instagram || siteConfig.social.instagram
+  const facebook = content?.contact_facebook || siteConfig.social.facebook
+
   return (
     <footer className="bg-bambino-purple text-white">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -51,7 +56,7 @@ export function Footer() {
             </ul>
             <div className="flex gap-4">
               <a
-                href={siteConfig.social.instagram}
+                href={instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-yellow"
@@ -60,7 +65,7 @@ export function Footer() {
                 <FaInstagram className="h-6 w-6" aria-hidden="true" />
               </a>
               <a
-                href={siteConfig.social.facebook}
+                href={facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-bambino-yellow"
@@ -74,7 +79,7 @@ export function Footer() {
 
         <div className="mt-10 border-t border-white/20 pt-8 text-center">
           <p className="text-sm text-white/90">
-            © 2025 Bambinos Playful Learning. All rights reserved.
+            © {new Date().getFullYear()} Bambinos Playful Learning. All rights reserved.
           </p>
           <p className="mt-2 text-xs text-white/70">Baby &amp; Toddler Play Centre</p>
           <p className="mt-3 text-xs text-white/60">

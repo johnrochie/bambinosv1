@@ -1,7 +1,17 @@
 import { useState } from 'react'
 
-export function About() {
+export function About({ content }) {
   const [imgFailed, setImgFailed] = useState(false)
+  const heading = content.about_heading || 'About Us'
+  const image = content.about_image
+  // Stored as paragraphs joined by a blank line (see evomedia-cms's
+  // seed-bambinos.ts) rather than a repeating list field — these are
+  // always plain prose in a fixed order, with no per-paragraph fields
+  // (icon, image, etc.) the way offer cards or gallery photos need.
+  const paragraphs = (content.about_paragraphs || '')
+    .split('\n\n')
+    .map((p) => p.trim())
+    .filter(Boolean)
 
   return (
     <section
@@ -11,9 +21,9 @@ export function About() {
     >
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
         <div className="order-2 lg:order-1">
-          {!imgFailed ? (
+          {image && !imgFailed ? (
             <img
-              src="/images/about-placeholder.jpg"
+              src={image}
               alt="Families enjoying bubbles and sensory play trays at Bambinos Playful Learning"
               className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg ring-4 ring-white/80"
               width="800"
@@ -25,10 +35,10 @@ export function About() {
             <div
               className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl bg-gradient-to-br from-bambino-teal/30 via-bambino-yellow/40 to-bambino-orange/30 shadow-lg ring-4 ring-white/80"
               role="img"
-              aria-label="Placeholder for centre photo — add images/about-placeholder.jpg in your project"
+              aria-label="Placeholder for centre photo"
             >
               <span className="px-6 text-center font-heading text-lg font-bold text-bambino-purple/80">
-                Add your photo: public/images/about-placeholder.jpg
+                Add a photo in the CMS
               </span>
             </div>
           )}
@@ -38,31 +48,12 @@ export function About() {
             id="about-heading"
             className="font-heading text-3xl font-extrabold text-gray-900 sm:text-4xl"
           >
-            About Us
+            {heading}
           </h2>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-gray-800 sm:text-lg">
-            <p>
-              At Bambinos Playful Learning, we believe childhood is best spent curious, messy, and
-              joyfully busy. Our baby and toddler play centre is built around child-led discovery —
-              little ones choose what captures their attention while grown-ups relax in a calm,
-              supportive space.
-            </p>
-            <p>
-              We love messy play and sensory exploration: textures, colours, and safe &ldquo;just
-              try it&rdquo; moments that build confidence and fine motor skills. Every session is
-              designed to feel warm, welcoming, and gently structured so children can play at their
-              own pace.
-            </p>
-            <p>
-              Social interaction matters here. Side-by-side play, shared giggles, and turn-taking
-              in small groups help toddlers practise empathy and communication in a gentle,
-              age-appropriate way.
-            </p>
-            <p>
-              We also weave in rich language throughout the room — songs, simple signs, and
-              descriptive chat — to support vocabulary growth and early communication. Whether your
-              child is babbling, signing, or chatting away, we meet them where they are.
-            </p>
+            {paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
         </div>
       </div>
